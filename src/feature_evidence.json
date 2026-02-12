@@ -1,0 +1,49 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-remove-the-project-card-for-tmu-notes-wst-by-deleting-the-staticprojects-entry-whose-name-is-tmu-notes-wst-so-it-no-longer-appears-anywhere-on-the-page",
+      "featureTitle": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), remove the project card for \"TMU-Notes WST\" by deleting the staticProjects entry whose name is \"TMU-Notes-WST\" so it no longer appears anywhere on the page.",
+      "files": [
+        "frontend/src/pages/ProjectsPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "authorization@3.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-add-a-new-project-card-as-the-first-item-in-the-staticprojects-list-so-it-appears-before-morshid-with-title-project-name-telemeetup-tmu-notes-description-project-description-preserving-line-breaks-and-bullets-exactly-as-user-provided-telemeetup-is-a-one-stop-teleconferencing-solution-with-ai-powered-features-recording-transcription-translation-100-languages-ai-assistant-summarization-whiteboard-screen-sharing-connect-with-anyone-with-or-without-the-app-dial-out-to-any-phone-number-a-single-button-labeled-watch-video-that-opens-https-www-youtube-com-watch-v-pk2ttlglnno-in-a-new-tab-window-implement-the-watch-video-button-using-the-existing-card-button-rendering-pattern-on-this-page-e-g-set-websiteurl-to-the-youtube-link-and-set-custombuttontext-to-watch-video-without-altering-global-styling-or-other-cards",
+      "featureTitle": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), add a new project card as the FIRST item in the staticProjects list (so it appears before \"Morshid\") with:\n- Title (project.name): \"TeleMeetUp & TMU-Notes\"\n- Description (project.description), preserving line breaks and bullets exactly as user provided:\n\"TeleMeetUp is a one-stop teleconferencing solution with AI-powered features:\n- Recording, Transcription & Translation (100+ languages)\n- AI Assistant & Summarization\n- Whiteboard & Screen Sharing\n- Connect with anyone with or without the app\n- Dial out to any phone number\"\n- A single button labeled \"Watch Video\" that opens https://www.youtube.com/watch?v=pk2TtlglNno in a new tab/window.\n\nImplement the \"Watch Video\" button using the existing card button rendering pattern on this page (e.g., set websiteUrl to the YouTube link and set customButtonText to \"Watch Video\"), without altering global styling or other cards.",
+      "files": [
+        "frontend/src/pages/ProjectsPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "authorization@3.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

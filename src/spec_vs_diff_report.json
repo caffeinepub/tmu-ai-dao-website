@@ -1,0 +1,31 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-12T17:30:28.647Z",
+  "summary": "REQ-3 and most of REQ-4 appear implemented in ProjectsPage.tsx: the new \"TeleMeetUp & TMU-Notes\" project is added as the first staticProjects entry and no \"TMU-Notes-WST\" entry is visible in the provided snippet. However, the diff summary does not show the card/button rendering code, so the acceptance criteria requiring target=\"_blank\" and rel=\"noopener noreferrer\" for the \"Watch Video\" link cannot be verified from the provided evidence. There are also indications (in the file summary) of additional Projects page changes (e.g., Morshid button layout) that were not requested, but the truncated code does not conclusively confirm them.",
+  "missing_requirements": [
+    {
+      "id": "REQ-4",
+      "requirement": "Clicking \"Watch Video\" opens https://www.youtube.com/watch?v=pk2TtlglNno in a new browser tab/window (target=\"_blank\" with rel=\"noopener noreferrer\").",
+      "reason": "The diff shows the new project entry uses websiteUrl and customButtonText, but the rendering code where target/rel would be set is not included in the truncated snippet, so this AC cannot be confirmed from the diff evidence alone.",
+      "evidence": [
+        "frontend/src/pages/ProjectsPage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Change to the Morshid card button layout (\"six buttons arranged in three rows of two\") on the Projects/SubDAOs page.",
+      "reason": "The BuildRequest explicitly says not to change anything else on the Projects/SubDAOs page beyond removing \"TMU-Notes-WST\" and adding the new first card. The modified frontend-file-summaries.txt claims a Morshid button layout change, which is not part of REQ-3/REQ-4.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "confidence": 0.62,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/pages/ProjectsPage.tsx",
+    "project_state.json"
+  ]
+}

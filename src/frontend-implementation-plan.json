@@ -1,0 +1,45 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Projects/SubDAOs cards: remove TMU-Notes-WST and add TeleMeetUp & TMU-Notes first",
+  "requirements": [
+    {
+      "id": "REQ-3",
+      "summary": "Remove the \"TMU-Notes-WST\" project card from the Projects/SubDAOs page by deleting its staticProjects entry.",
+      "acceptanceCriteria": [
+        "The \"TMU-Notes-WST\" card is not rendered anywhere on the Projects/SubDAOs page.",
+        "No other existing project cards are removed or reordered (except as needed to insert the new first card in REQ-4)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProjectsPage.tsx",
+          "operation": "modify",
+          "description": "Delete the staticProjects list item whose name is \"TMU-Notes-WST\" so it is no longer included in the rendered project grid, without changing any other cards or page styling."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add a new first-position project card \"TeleMeetUp & TMU-Notes\" with the provided multi-line/bulleted description and a \"Watch Video\" button opening the YouTube link in a new tab.",
+      "acceptanceCriteria": [
+        "A new card titled \"TeleMeetUp & TMU-Notes\" appears as the first card in the grid (before \"Morshid\").",
+        "The new card displays the provided description text with bullets visible/readable.",
+        "The card includes a button labeled exactly \"Watch Video\".",
+        "Clicking \"Watch Video\" opens https://www.youtube.com/watch?v=pk2TtlglNno in a new browser tab/window (target=\"_blank\" with rel=\"noopener noreferrer\").",
+        "No other page content, card styling, hover behavior, or existing buttons/links are changed."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProjectsPage.tsx",
+          "operation": "modify",
+          "description": "Insert a new Project object as the FIRST item in staticProjects (before \"Morshid\") with name \"TeleMeetUp & TMU-Notes\", description text exactly as provided (including line breaks and bullet lines), websiteUrl set to https://www.youtube.com/watch?v=pk2TtlglNno, and customButtonText set to \"Watch Video\" so the existing button rendering pattern is used and opens in a new tab with rel=\"noopener noreferrer\"."
+        },
+        {
+          "path": "frontend/src/pages/ProjectsPage.tsx",
+          "operation": "modify",
+          "description": "Update renderDescription to add a minimal, name-based special-case for \"TeleMeetUp & TMU-Notes\" so that single-newline bullet lines render as readable bullets (similar in spirit to the existing \"Social Edification\" special-case), without changing formatting behavior for any other project card."
+        }
+      ]
+    }
+  ]
+}

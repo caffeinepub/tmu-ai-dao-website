@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Website update: starting from the last published version, on the Projects/SubDAOs page delete the “TMU-Notes WST” card, then add a new first-position card “TeleMeetUp & TMU-Notes” (before Morshid) with the provided description and a “Watch Video” button linking to https://www.youtube.com/watch?v=pk2TtlglNno in a new tab; do not change anything else.",
+  "architectural_notes": [
+    "Apply changes starting from the last published (production) version."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-on-the-white-paper-page-frontend-src-pages-whitepaperpage-tsx-add-a-new-button-labeled-tmu-strategic-assessment-directly-above-the-existing-white-paper-in-a-nutshell-button-in-the-header-section-when-clicked-it-must-open-https-tmu-ai-docs-tmu-strategic-assessment-pdf-in-a-new-browser-tab-window-the-new-button-must-match-the-existing-white-paper-in-a-nutshell-button-styling-and-hover-behavior-same-tailwind-classes-and-the-same-inline-style-onmouseenter-onmouseleave-effects",
+      "title": "On the White Paper page (frontend/src/pages/WhitePaperPage.tsx), add a new button labeled \"TMU Strategic Assessment\" directly above the existing \"White Paper in a Nutshell\" button in the header section. When clicked, it must open https://tmu.ai/docs/TMU_Strategic_Assessment.pdf in a new browser tab/window. The new button must match the existing \"White Paper in a Nutshell\" button styling and hover behavior (same Tailwind classes and the same inline style/onMouseEnter/onMouseLeave effects).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-the-white-paper-page-frontend-src-pages-whitepaperpage-tsx-change-only-the-tmu-strategic-assessment-button-background-color-to-blue-3b82f6-while-keeping-the-white-paper-in-a-nutshell-button-background-color-red-ff0000-and-leaving-all-other-styling-hover-behavior-layout-and-functionality-unchanged",
+      "title": "On the White Paper page (frontend/src/pages/WhitePaperPage.tsx), change ONLY the \"TMU Strategic Assessment\" button background color to blue (#3B82F6), while keeping the \"White Paper in a Nutshell\" button background color red (#FF0000) and leaving all other styling, hover behavior, layout, and functionality unchanged.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-remove-the-project-card-for-tmu-notes-wst-by-deleting-the-staticprojects-entry-whose-name-is-tmu-notes-wst-so-it-no-longer-appears-anywhere-on-the-page",
+      "title": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), remove the project card for \"TMU-Notes WST\" by deleting the staticProjects entry whose name is \"TMU-Notes-WST\" so it no longer appears anywhere on the page.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-add-a-new-project-card-as-the-first-item-in-the-staticprojects-list-so-it-appears-before-morshid-with-title-project-name-telemeetup-tmu-notes-description-project-description-preserving-line-breaks-and-bullets-exactly-as-user-provided-telemeetup-is-a-one-stop-teleconferencing-solution-with-ai-powered-features-recording-transcription-translation-100-languages-ai-assistant-summarization-whiteboard-screen-sharing-connect-with-anyone-with-or-without-the-app-dial-out-to-any-phone-number-a-single-button-labeled-watch-video-that-opens-https-www-youtube-com-watch-v-pk2ttlglnno-in-a-new-tab-window-implement-the-watch-video-button-using-the-existing-card-button-rendering-pattern-on-this-page-e-g-set-websiteurl-to-the-youtube-link-and-set-custombuttontext-to-watch-video-without-altering-global-styling-or-other-cards",
+      "title": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), add a new project card as the FIRST item in the staticProjects list (so it appears before \"Morshid\") with:\n- Title (project.name): \"TeleMeetUp & TMU-Notes\"\n- Description (project.description), preserving line breaks and bullets exactly as user provided:\n\"TeleMeetUp is a one-stop teleconferencing solution with AI-powered features:\n- Recording, Transcription & Translation (100+ languages)\n- AI Assistant & Summarization\n- Whiteboard & Screen Sharing\n- Connect with anyone with or without the app\n- Dial out to any phone number\"\n- A single button labeled \"Watch Video\" that opens https://www.youtube.com/watch?v=pk2TtlglNno in a new tab/window.\n\nImplement the \"Watch Video\" button using the existing card button rendering pattern on this page (e.g., set websiteUrl to the YouTube link and set customButtonText to \"Watch Video\"), without altering global styling or other cards.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-2",
+      "summary": "On the White Paper page, change the existing “TMU Strategic Assessment” button color to blue (#3B82F6) while keeping “White Paper in a Nutshell” button red; do not change anything else.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "On Projects/SubDAOs page, delete the “TMU-Notes WST” card completely; do not change anything else.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "On Projects/SubDAOs page, add a new FIRST-position card (before Morshid) titled “TeleMeetUp & TMU-Notes” with the provided TeleMeetUp description and a “Watch Video” button that opens https://www.youtube.com/watch?v=pk2TtlglNno in a new tab; do not change anything else.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Add 'TMU Strategic Assessment' button above White Paper video button",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
