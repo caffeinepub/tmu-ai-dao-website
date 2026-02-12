@@ -38,7 +38,7 @@ export default function ProjectsPage() {
       description: 'TeleMeetUp is a one-stop teleconferencing solution with AI-powered features:\n- Recording, Transcription & Translation (100+ languages)\n- AI Assistant & Summarization\n- Whiteboard & Screen Sharing\n- Connect with anyone with or without the app\n- Dial out to any phone number',
       category: 'Communication / AI',
       websiteUrl: 'https://www.youtube.com/watch?v=pk2TtlglNno',
-      imageUrl: '/assets/generated/tmu-notes-wst-project.dim_400x250.png',
+      imageUrl: '/assets/generated/telemeetup-tmu-notes-project.dim_400x250.png',
       status: 'active',
       customButtonText: 'Watch Video'
     },
@@ -195,13 +195,13 @@ export default function ProjectsPage() {
     if (project.name === 'Social Edification') {
       return (
         <div className="space-y-2">
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p className="text-white text-sm leading-relaxed">
             {project.description}
           </p>
           <ul className="space-y-1 pl-4">
-            <li className="text-gray-400 text-xs leading-relaxed">- Raising the digital consciousness of general population</li>
-            <li className="text-gray-400 text-xs leading-relaxed">- Contributing to meeting the UN SDG (Sustainable Development Goals)</li>
-            <li className="text-gray-400 text-xs leading-relaxed">- Building kinder, more equitable, more enlightened society</li>
+            <li className="text-white text-sm leading-relaxed">- Raising the digital consciousness of general population</li>
+            <li className="text-white text-sm leading-relaxed">- Contributing to meeting the UN SDG (Sustainable Development Goals)</li>
+            <li className="text-white text-sm leading-relaxed">- Building kinder, more equitable, more enlightened society</li>
           </ul>
         </div>
       );
@@ -214,12 +214,12 @@ export default function ProjectsPage() {
       
       return (
         <div className="space-y-2">
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p className="text-white text-sm leading-relaxed">
             {mainText}
           </p>
           <ul className="space-y-1 pl-4">
             {bulletPoints.map((bullet, index) => (
-              <li key={index} className="text-gray-400 text-xs leading-relaxed">{bullet.trim()}</li>
+              <li key={index} className="text-white text-sm leading-relaxed">{bullet.trim()}</li>
             ))}
           </ul>
         </div>
@@ -235,12 +235,12 @@ export default function ProjectsPage() {
           if (part.trim().startsWith('-')) {
             return (
               <div key={index} className="pl-4">
-                <p className="text-gray-400 text-sm leading-relaxed">{part.trim()}</p>
+                <p className="text-white text-sm leading-relaxed">{part.trim()}</p>
               </div>
             );
           } else {
             return (
-              <p key={index} className="text-gray-400 text-sm leading-relaxed">
+              <p key={index} className="text-white text-sm leading-relaxed">
                 {part.trim()}
               </p>
             );
@@ -298,7 +298,7 @@ export default function ProjectsPage() {
                       {project.category}
                     </Badge>
                   </div>
-                  <CardDescription className="text-gray-400 text-sm leading-relaxed">
+                  <CardDescription className="text-white text-sm leading-relaxed">
                     {renderDescription(project)}
                   </CardDescription>
                 </CardHeader>
@@ -488,7 +488,7 @@ export default function ProjectsPage() {
                       </Button>
                     </div>
                   ) : (
-                    // Default button for all other projects
+                    // Default single button
                     <Button 
                       asChild
                       className="w-full text-white font-medium"

@@ -1,12 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
-  "summary": "Website update: starting from the last published version, on the Projects/SubDAOs page delete the “TMU-Notes WST” card, then add a new first-position card “TeleMeetUp & TMU-Notes” (before Morshid) with the provided description and a “Watch Video” button linking to https://www.youtube.com/watch?v=pk2TtlglNno in a new tab; do not change anything else.",
+  "projectStateVersion": 9,
+  "summary": "Website update: starting from the last published (production) version, on the Projects/SubDAOs page make ALL project cards share the same styling (brighter/clearer text, white description text, consistent font size/style across all cards) and generate a new AI image for the “TeleMeetUp & TMU-Notes” card matching the provided visual requirements; do not change anything else.",
   "architectural_notes": [
     "Apply changes starting from the last published (production) version."
   ],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Bright modern virtual meeting illustration with a video conferencing grid showing multiple participants on screen, plus speech bubbles and translation symbols, professional atmosphere (telemeetup-tmu-notes-project.dim_400x250.png)",
   "existing_features": [
     {
       "id": "feature-on-the-white-paper-page-frontend-src-pages-whitepaperpage-tsx-add-a-new-button-labeled-tmu-strategic-assessment-directly-above-the-existing-white-paper-in-a-nutshell-button-in-the-header-section-when-clicked-it-must-open-https-tmu-ai-docs-tmu-strategic-assessment-pdf-in-a-new-browser-tab-window-the-new-button-must-match-the-existing-white-paper-in-a-nutshell-button-styling-and-hover-behavior-same-tailwind-classes-and-the-same-inline-style-onmouseenter-onmouseleave-effects",
@@ -39,6 +40,22 @@
         "REQ-4"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-update-the-project-card-styling-so-all-project-cards-use-the-same-text-styling-make-the-text-brighter-clearer-no-muted-washed-out-appearance-use-white-text-for-all-card-descriptions-including-any-bullet-points-and-keep-the-same-font-size-and-font-style-across-all-cards-description-content",
+      "title": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), update the project card styling so ALL project cards use the same text styling: make the text brighter/clearer (no muted/washed-out appearance), use white text for ALL card descriptions (including any bullet points), and keep the same font size and font style across ALL cards’ description content.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-a-new-ai-image-asset-for-the-telemeetup-tmu-notes-project-card-depicting-a-professional-virtual-meeting-multiple-people-visible-on-a-video-conference-screen-with-speech-bubbles-and-or-translation-symbols-in-a-bright-modern-design-add-the-image-to-frontend-public-assets-generated-and-update-the-telemeetup-tmu-notes-project-s-imageurl-in-frontend-src-pages-projectspage-tsx-to-use-the-new-asset",
+      "title": "Generate a new AI image asset for the “TeleMeetUp & TMU-Notes” project card depicting a professional virtual meeting: multiple people visible on a video conference screen, with speech bubbles and/or translation symbols, in a bright, modern design. Add the image to frontend/public/assets/generated and update the TeleMeetUp & TMU-Notes project’s imageUrl in frontend/src/pages/ProjectsPage.tsx to use the new asset.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -59,8 +76,21 @@
       "summary": "On Projects/SubDAOs page, add a new FIRST-position card (before Morshid) titled “TeleMeetUp & TMU-Notes” with the provided TeleMeetUp description and a “Watch Video” button that opens https://www.youtube.com/watch?v=pk2TtlglNno in a new tab; do not change anything else.",
       "reqIds": [],
       "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "On Projects/SubDAOs page, make ALL project cards share the same style: brighter/clearer text (not blurry), white description text, and consistent font size/style across all cards; do not change anything else.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Generate a new AI image for the “TeleMeetUp & TMU-Notes” project card depicting video conferencing with multiple people, translation/speech-bubble elements, a professional virtual meeting atmosphere, and a bright modern design; do not change anything else.",
+      "reqIds": [],
+      "status": "pending"
     }
   ],
+  "gameProjectType": "none",
   "projectName": "Add 'TMU Strategic Assessment' button above White Paper video button",
   "clarification_mode": "instant",
   "clarification_rounds": 0

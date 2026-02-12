@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-remove-the-project-card-for-tmu-notes-wst-by-deleting-the-staticprojects-entry-whose-name-is-tmu-notes-wst-so-it-no-longer-appears-anywhere-on-the-page",
-      "featureTitle": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), remove the project card for \"TMU-Notes WST\" by deleting the staticProjects entry whose name is \"TMU-Notes-WST\" so it no longer appears anywhere on the page.",
+      "featureId": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-update-the-project-card-styling-so-all-project-cards-use-the-same-text-styling-make-the-text-brighter-clearer-no-muted-washed-out-appearance-use-white-text-for-all-card-descriptions-including-any-bullet-points-and-keep-the-same-font-size-and-font-style-across-all-cards-description-content",
+      "featureTitle": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), update the project card styling so ALL project cards use the same text styling: make the text brighter/clearer (no muted/washed-out appearance), use white text for ALL card descriptions (including any bullet points), and keep the same font size and font style across ALL cards’ description content.",
       "files": [
         "frontend/src/pages/ProjectsPage.tsx"
       ],
@@ -19,13 +19,13 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-5"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-on-the-projects-subdaos-page-frontend-src-pages-projectspage-tsx-add-a-new-project-card-as-the-first-item-in-the-staticprojects-list-so-it-appears-before-morshid-with-title-project-name-telemeetup-tmu-notes-description-project-description-preserving-line-breaks-and-bullets-exactly-as-user-provided-telemeetup-is-a-one-stop-teleconferencing-solution-with-ai-powered-features-recording-transcription-translation-100-languages-ai-assistant-summarization-whiteboard-screen-sharing-connect-with-anyone-with-or-without-the-app-dial-out-to-any-phone-number-a-single-button-labeled-watch-video-that-opens-https-www-youtube-com-watch-v-pk2ttlglnno-in-a-new-tab-window-implement-the-watch-video-button-using-the-existing-card-button-rendering-pattern-on-this-page-e-g-set-websiteurl-to-the-youtube-link-and-set-custombuttontext-to-watch-video-without-altering-global-styling-or-other-cards",
-      "featureTitle": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), add a new project card as the FIRST item in the staticProjects list (so it appears before \"Morshid\") with:\n- Title (project.name): \"TeleMeetUp & TMU-Notes\"\n- Description (project.description), preserving line breaks and bullets exactly as user provided:\n\"TeleMeetUp is a one-stop teleconferencing solution with AI-powered features:\n- Recording, Transcription & Translation (100+ languages)\n- AI Assistant & Summarization\n- Whiteboard & Screen Sharing\n- Connect with anyone with or without the app\n- Dial out to any phone number\"\n- A single button labeled \"Watch Video\" that opens https://www.youtube.com/watch?v=pk2TtlglNno in a new tab/window.\n\nImplement the \"Watch Video\" button using the existing card button rendering pattern on this page (e.g., set websiteUrl to the YouTube link and set customButtonText to \"Watch Video\"), without altering global styling or other cards.",
+      "featureId": "feature-generate-a-new-ai-image-asset-for-the-telemeetup-tmu-notes-project-card-depicting-a-professional-virtual-meeting-multiple-people-visible-on-a-video-conference-screen-with-speech-bubbles-and-or-translation-symbols-in-a-bright-modern-design-add-the-image-to-frontend-public-assets-generated-and-update-the-telemeetup-tmu-notes-project-s-imageurl-in-frontend-src-pages-projectspage-tsx-to-use-the-new-asset",
+      "featureTitle": "Generate a new AI image asset for the “TeleMeetUp & TMU-Notes” project card depicting a professional virtual meeting: multiple people visible on a video conference screen, with speech bubbles and/or translation symbols, in a bright, modern design. Add the image to frontend/public/assets/generated and update the TeleMeetUp & TMU-Notes project’s imageUrl in frontend/src/pages/ProjectsPage.tsx to use the new asset.",
       "files": [
         "frontend/src/pages/ProjectsPage.tsx"
       ],
@@ -41,7 +41,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-6"
       ],
       "confidence": "high"
     }

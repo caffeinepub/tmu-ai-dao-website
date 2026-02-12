@@ -1,60 +1,60 @@
 {
   "kind": "build_request",
-  "title": "Update Projects/SubDAOs cards: remove TMU-Notes-WST and add TeleMeetUp & TMU-Notes first",
+  "title": "Unify Projects/SubDAOs card typography and generate new TeleMeetUp image",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-3",
-      "text": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), remove the project card for \"TMU-Notes WST\" by deleting the staticProjects entry whose name is \"TMU-Notes-WST\" so it no longer appears anywhere on the page.",
+      "id": "REQ-5",
+      "text": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), update the project card styling so ALL project cards use the same text styling: make the text brighter/clearer (no muted/washed-out appearance), use white text for ALL card descriptions (including any bullet points), and keep the same font size and font style across ALL cards’ description content.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-7"
+          "msg-1"
         ],
         "quotes": [
-          "Find \"TMU-Notes WST\" card and delete it completely."
+          "Make ALL project cards have the same style:\n\n1. Make all text brighter and clearer (not blur) in ALL cards.\n\n2. Use white text for descriptions in ALL cards.\n\n3. Keep the same font size and style across ALL cards."
         ]
       },
       "acceptanceCriteria": [
-        "The \"TMU-Notes-WST\" card is not rendered anywhere on the Projects/SubDAOs page.",
-        "No other existing project cards are removed or reordered (except as needed to insert the new first card in REQ-4)."
+        "On frontend/src/pages/ProjectsPage.tsx, no project card description text renders using muted gray classes (e.g., text-gray-400) or differing font-size classes between cards; description content uses a consistent font size and style across every card.",
+        "All project description text (including TeleMeetUp & TMU-Notes bullets and Social Edification bullets) renders in white.",
+        "Only styling for text/typography in the project cards is changed; card order, buttons, links, and layout behavior remain unchanged."
       ]
     },
     {
-      "id": "REQ-4",
-      "text": "On the Projects/SubDAOs page (frontend/src/pages/ProjectsPage.tsx), add a new project card as the FIRST item in the staticProjects list (so it appears before \"Morshid\") with:\n- Title (project.name): \"TeleMeetUp & TMU-Notes\"\n- Description (project.description), preserving line breaks and bullets exactly as user provided:\n\"TeleMeetUp is a one-stop teleconferencing solution with AI-powered features:\n- Recording, Transcription & Translation (100+ languages)\n- AI Assistant & Summarization\n- Whiteboard & Screen Sharing\n- Connect with anyone with or without the app\n- Dial out to any phone number\"\n- A single button labeled \"Watch Video\" that opens https://www.youtube.com/watch?v=pk2TtlglNno in a new tab/window.\n\nImplement the \"Watch Video\" button using the existing card button rendering pattern on this page (e.g., set websiteUrl to the YouTube link and set customButtonText to \"Watch Video\"), without altering global styling or other cards.",
+      "id": "REQ-6",
+      "text": "Generate a new AI image asset for the “TeleMeetUp & TMU-Notes” project card depicting a professional virtual meeting: multiple people visible on a video conference screen, with speech bubbles and/or translation symbols, in a bright, modern design. Add the image to frontend/public/assets/generated and update the TeleMeetUp & TMU-Notes project’s imageUrl in frontend/src/pages/ProjectsPage.tsx to use the new asset.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-7"
+          "msg-1"
         ],
         "quotes": [
-          "Add a new card called \"TeleMeetUp & TMU-Notes\" in the FIRST position (before Morshid).",
-          "Add a button \"Watch Video\" that opens this link in a new tab: https://www.youtube.com/watch?v=pk2TtlglNno",
-          "DO NOT change anything else."
+          "Generate a new AI image for \"TeleMeetUp & TMU-Notes\" card showing:\n   - Video conferencing with multiple people on screen\n   - Speech bubbles or translation symbols\n   - Professional virtual meeting atmosphere\n   - Bright and modern design"
         ]
       },
       "acceptanceCriteria": [
-        "A new card titled \"TeleMeetUp & TMU-Notes\" appears as the first card in the grid (before \"Morshid\").",
-        "The new card displays the provided description text with bullets visible/readable.",
-        "The card includes a button labeled exactly \"Watch Video\".",
-        "Clicking \"Watch Video\" opens https://www.youtube.com/watch?v=pk2TtlglNno in a new browser tab/window (target=\"_blank\" with rel=\"noopener noreferrer\").",
-        "No other page content, card styling, hover behavior, or existing buttons/links are changed."
+        "A new generated image file exists under frontend/public/assets/generated with the specified filename and dimensions.",
+        "The TeleMeetUp & TMU-Notes card displays the new image on the Projects/SubDAOs page.",
+        "No other project card images are changed."
       ]
     }
   ],
   "constraints": [
-    "Start from the last published version as the baseline.",
-    "Frontend only; do not introduce backend changes for this request.",
-    "Do not change anything else on the Projects/SubDAOs page beyond removing the \"TMU-Notes-WST\" card and adding the new first-position \"TeleMeetUp & TMU-Notes\" card with the specified button/link."
+    "Apply changes starting from the last published (production) version.",
+    "Do not modify any backend code or data models.",
+    "Do not change anything on pages other than Projects/SubDAOs (frontend/src/pages/ProjectsPage.tsx).",
+    "Do not change any functionality, links/URLs, button behaviors, project ordering, or non-typography styling beyond what is necessary to make card text brighter/clearer, descriptions white, and description typography consistent across all cards."
   ],
   "nonGoals": [
-    "Creating or modifying any backend (Motoko) functionality.",
-    "Changing the layout, theme, colors, typography, or interactions of the Projects/SubDAOs page beyond the specified card removal/addition.",
-    "Adding new routes or navigation changes."
+    "Changing project data (names, descriptions, categories, URLs) other than updating the TeleMeetUp & TMU-Notes imageUrl to the new generated asset.",
+    "Redesigning the card layout, grid layout, hover effects, or button styling/behavior.",
+    "Adding new projects or removing existing projects."
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Bright modern virtual meeting illustration with a video conferencing grid showing multiple participants on screen, plus speech bubbles and translation symbols, professional atmosphere (telemeetup-tmu-notes-project.dim_400x250.png)"
+    ],
     "edits": []
   }
 }

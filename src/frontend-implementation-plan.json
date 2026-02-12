@@ -1,43 +1,42 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Projects/SubDAOs cards: remove TMU-Notes-WST and add TeleMeetUp & TMU-Notes first",
+  "title": "Unify Projects/SubDAOs card typography and add new TeleMeetUp image",
   "requirements": [
     {
-      "id": "REQ-3",
-      "summary": "Remove the \"TMU-Notes-WST\" project card from the Projects/SubDAOs page by deleting its staticProjects entry.",
+      "id": "REQ-5",
+      "summary": "Unify all project card description typography to brighter white text with consistent font size/style across all cards (including bullet lists) on ProjectsPage.",
       "acceptanceCriteria": [
-        "The \"TMU-Notes-WST\" card is not rendered anywhere on the Projects/SubDAOs page.",
-        "No other existing project cards are removed or reordered (except as needed to insert the new first card in REQ-4)."
+        "On frontend/src/pages/ProjectsPage.tsx, no project card description text renders using muted gray classes (e.g., text-gray-400) or differing font-size classes between cards; description content uses a consistent font size and style across every card.",
+        "All project description text (including TeleMeetUp & TMU-Notes bullets and Social Edification bullets) renders in white.",
+        "Only styling for text/typography in the project cards is changed; card order, buttons, links, and layout behavior remain unchanged."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/ProjectsPage.tsx",
           "operation": "modify",
-          "description": "Delete the staticProjects list item whose name is \"TMU-Notes-WST\" so it is no longer included in the rendered project grid, without changing any other cards or page styling."
+          "description": "Update project card description typography only: remove muted/gray text classes from CardDescription and all description/bullet render paths (including Social Edification and TeleMeetUp & TMU-Notes) and enforce a single consistent text color (white) and a single consistent font size/style across all description content, without changing layout, ordering, links, buttons, or other non-typography styling."
         }
       ]
     },
     {
-      "id": "REQ-4",
-      "summary": "Add a new first-position project card \"TeleMeetUp & TMU-Notes\" with the provided multi-line/bulleted description and a \"Watch Video\" button opening the YouTube link in a new tab.",
+      "id": "REQ-6",
+      "summary": "Add a new generated TeleMeetUp & TMU-Notes image asset and point the TeleMeetUp card to it on ProjectsPage.",
       "acceptanceCriteria": [
-        "A new card titled \"TeleMeetUp & TMU-Notes\" appears as the first card in the grid (before \"Morshid\").",
-        "The new card displays the provided description text with bullets visible/readable.",
-        "The card includes a button labeled exactly \"Watch Video\".",
-        "Clicking \"Watch Video\" opens https://www.youtube.com/watch?v=pk2TtlglNno in a new browser tab/window (target=\"_blank\" with rel=\"noopener noreferrer\").",
-        "No other page content, card styling, hover behavior, or existing buttons/links are changed."
+        "A new generated image file exists under frontend/public/assets/generated with the specified filename and dimensions.",
+        "The TeleMeetUp & TMU-Notes card displays the new image on the Projects/SubDAOs page.",
+        "No other project card images are changed."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/ProjectsPage.tsx",
-          "operation": "modify",
-          "description": "Insert a new Project object as the FIRST item in staticProjects (before \"Morshid\") with name \"TeleMeetUp & TMU-Notes\", description text exactly as provided (including line breaks and bullet lines), websiteUrl set to https://www.youtube.com/watch?v=pk2TtlglNno, and customButtonText set to \"Watch Video\" so the existing button rendering pattern is used and opens in a new tab with rel=\"noopener noreferrer\"."
+          "path": "frontend/public/assets/generated/telemeetup-tmu-notes-project.dim_400x250.png",
+          "operation": "create",
+          "description": "Add the new generated image asset: Bright modern virtual meeting illustration with a video conferencing grid showing multiple participants on screen, plus speech bubbles and translation symbols, professional atmosphere."
         },
         {
           "path": "frontend/src/pages/ProjectsPage.tsx",
           "operation": "modify",
-          "description": "Update renderDescription to add a minimal, name-based special-case for \"TeleMeetUp & TMU-Notes\" so that single-newline bullet lines render as readable bullets (similar in spirit to the existing \"Social Edification\" special-case), without changing formatting behavior for any other project card."
+          "description": "Update the TeleMeetUp & TMU-Notes project's imageUrl to reference the new generated asset at frontend/public/assets/generated/telemeetup-tmu-notes-project.dim_400x250.png, leaving all other project card images unchanged."
         }
       ]
     }
