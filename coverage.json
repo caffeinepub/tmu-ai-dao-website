@@ -1,0 +1,43 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T00:11:33.860Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 1,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add a clearly visible EN/FR toggle button to the top navigation bar in `frontend/src/components/Header.tsx`. The button must appear in both desktop and mobile nav menus. Clicking it should toggle between English (EN) and French (FR) language states. The button should be visually distinct — styled with a clear label showing the current language and a separator (e.g., 'EN | FR') with the active language highlighted — using the existing TMU AI DAO color tokens from `frontend/src/index.css`. Implement a language context or state (e.g., a React context or local state lifted to the Header/Layout level) so the selected language can be consumed by page components. Do NOT change any other UI elements, routes, or backend logic.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/contexts/LanguageContext.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Layout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/contexts/LanguageContext.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Layout.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/contexts/LanguageContext.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

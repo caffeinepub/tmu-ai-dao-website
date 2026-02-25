@@ -1,0 +1,16 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T00:11:33.856Z",
+  "summary": "The diff implements REQ-1 almost completely: a LanguageContext is created, the Header.tsx includes a LanguageToggle component for both desktop and mobile viewports, and Layout.tsx wraps the app in LanguageProvider. The active language is visually highlighted with gold/bold styling. The implementation appears to satisfy all acceptance criteria. One minor concern is that the mobile menu portion of Header.tsx is truncated, so full verification of the mobile toggle presence is based on partial evidence, but the file summary confirms it.",
+  "missing_requirements": [],
+  "hallucinated_features": [],
+  "confidence": 0.88,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/contexts/LanguageContext.tsx",
+    "project_state.json"
+  ]
+}

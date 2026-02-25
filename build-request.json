@@ -1,0 +1,48 @@
+{
+  "kind": "build_request",
+  "title": "Add visible EN/FR language toggle button to navigation bar",
+  "projectName": "TMU AI DAO",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a clearly visible EN/FR toggle button to the top navigation bar in `frontend/src/components/Header.tsx`. The button must appear in both desktop and mobile nav menus. Clicking it should toggle between English (EN) and French (FR) language states. The button should be visually distinct — styled with a clear label showing the current language and a separator (e.g., 'EN | FR') with the active language highlighted — using the existing TMU AI DAO color tokens from `frontend/src/index.css`. Implement a language context or state (e.g., a React context or local state lifted to the Header/Layout level) so the selected language can be consumed by page components. Do NOT change any other UI elements, routes, or backend logic.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "The EN/FR language toggle button is not appearing in the navigation menu.",
+          "Please add a visible EN/FR toggle button in the top navigation bar that users can click to switch between English and French.",
+          "Make the button clearly visible.",
+          "DO NOT change anything else."
+        ]
+      },
+      "acceptanceCriteria": [
+        "An EN/FR toggle button is visible in the top navigation bar on desktop viewports.",
+        "An EN/FR toggle button is visible in the mobile navigation menu on small viewports.",
+        "The active language is visually highlighted (e.g., bold, different color, or underline) compared to the inactive language.",
+        "Clicking the button toggles the language state between 'EN' and 'FR'.",
+        "The button renders without errors and does not break existing navigation links or layout.",
+        "No other UI components, routes, or backend code are modified."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any backend files.",
+    "Do not change any existing navigation links, layout, or page components beyond wiring up the language context.",
+    "Do not modify immutable frontend paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Use existing TMU AI DAO color tokens and Tailwind utility classes for button styling."
+  ],
+  "nonGoals": [
+    "Translating page content to French (only the toggle button UI is in scope for this request).",
+    "Persisting language preference to the backend or localStorage.",
+    "Adding any new routes or pages.",
+    "Changing any other visual design or layout elements."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

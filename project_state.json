@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Project with EN/FR language toggle functionality in the navigation bar.",
+  "architectural_notes": [],
+  "known_issues": [
+    "EN/FR language toggle button not appearing in the navigation menu"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-add-a-clearly-visible-en-fr-toggle-button-to-the-top-navigation-bar-in-frontend-src-components-header-tsx-the-button-must-appear-in-both-desktop-and-mobile-nav-menus-clicking-it-should-toggle-between-english-en-and-french-fr-language-states-the-button-should-be-visually-distinct-styled-with-a-clear-label-showing-the-current-language-and-a-separator-e-g-en-fr-with-the-active-language-highlighted-using-the-existing-tmu-ai-dao-color-tokens-from-frontend-src-index-css-implement-a-language-context-or-state-e-g-a-react-context-or-local-state-lifted-to-the-header-layout-level-so-the-selected-language-can-be-consumed-by-page-components-do-not-change-any-other-ui-elements-routes-or-backend-logic",
+      "title": "Add a clearly visible EN/FR toggle button to the top navigation bar in `frontend/src/components/Header.tsx`. The button must appear in both desktop and mobile nav menus. Clicking it should toggle between English (EN) and French (FR) language states. The button should be visually distinct — styled with a clear label showing the current language and a separator (e.g., 'EN | FR') with the active language highlighted — using the existing TMU AI DAO color tokens from `frontend/src/index.css`. Implement a language context or state (e.g., a React context or local state lifted to the Header/Layout level) so the selected language can be consumed by page components. Do NOT change any other UI elements, routes, or backend logic.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add visible EN/FR toggle button in the top navigation bar to switch between English and French",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "TMU AI DAO",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

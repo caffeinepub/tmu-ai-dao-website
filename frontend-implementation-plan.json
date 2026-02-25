@@ -1,0 +1,36 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add visible EN/FR language toggle button to navigation bar",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add a clearly visible EN/FR toggle button to the top navigation bar that switches between English and French language states, with visual highlighting of the active language",
+      "acceptanceCriteria": [
+        "An EN/FR toggle button is visible in the top navigation bar on desktop viewports.",
+        "An EN/FR toggle button is visible in the mobile navigation menu on small viewports.",
+        "The active language is visually highlighted (e.g., bold, different color, or underline) compared to the inactive language.",
+        "Clicking the button toggles the language state between 'EN' and 'FR'.",
+        "The button renders without errors and does not break existing navigation links or layout.",
+        "No other UI components, routes, or backend code are modified."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/contexts/LanguageContext.tsx",
+          "operation": "create",
+          "description": "Create a React context that manages language state ('EN' or 'FR') with a provider component and a custom useLanguage hook. The context should expose currentLanguage and toggleLanguage function. Initialize with 'EN' as the default language. This context will be consumed by Header and can be used by page components in future enhancements."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Import and use the LanguageContext to add an EN/FR toggle button in both desktop and mobile navigation menus. The button should display 'EN | FR' with a separator, highlighting the active language using font-weight-bold and the copper accent color from the TMU AI DAO color tokens (text-copper). Position the button in the desktop nav before the action buttons, and in the mobile menu after the navigation links. Use existing Tailwind utilities for styling. Ensure the button is clickable and calls toggleLanguage on click."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Wrap the existing Layout component content with the LanguageProvider from LanguageContext, so that all child components (Header, Footer, and page content via Outlet) can access the language state. This ensures the language context is available throughout the application without modifying the Header/Footer rendering logic."
+        }
+      ]
+    }
+  ]
+}
