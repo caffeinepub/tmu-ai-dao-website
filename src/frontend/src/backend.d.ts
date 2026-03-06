@@ -138,6 +138,7 @@ export interface backendInterface {
     isStripeConfigured(): Promise<boolean>;
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
     saveSocialEdificationImage(imageId: string): Promise<void>;
+    searchUserProfiles(searchText: string): Promise<Array<UserProfile>>;
     setStripeConfiguration(config: StripeConfiguration): Promise<void>;
     transform(input: TransformationInput): Promise<TransformationOutput>;
     validateTokenAmount(amount: bigint): Promise<TokenPurchaseValidation>;

@@ -144,6 +144,7 @@ export interface _SERVICE {
   'isStripeConfigured' : ActorMethod<[], boolean>,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
   'saveSocialEdificationImage' : ActorMethod<[string], undefined>,
+  'searchUserProfiles' : ActorMethod<[string], Array<UserProfile>>,
   'setStripeConfiguration' : ActorMethod<[StripeConfiguration], undefined>,
   'transform' : ActorMethod<[TransformationInput], TransformationOutput>,
   'validateTokenAmount' : ActorMethod<[bigint], TokenPurchaseValidation>,

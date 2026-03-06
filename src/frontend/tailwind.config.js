@@ -16,6 +16,18 @@ export default {
         },
         extend: {
             colors: {
+                /* TMU AI DAO brand colors */
+                navy: {
+                    DEFAULT: '#1a2744',
+                    dark: '#0a1628',
+                    medium: '#0f172a',
+                },
+                gold: {
+                    DEFAULT: '#FFC300',
+                },
+                green: {
+                    brand: '#009B3A',
+                },
                 border: 'oklch(var(--border))',
                 input: 'oklch(var(--input))',
                 ring: 'oklch(var(--ring) / <alpha-value>)',

@@ -1,29 +1,39 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, Download, BookOpen, Vote, Users, Wallet } from 'lucide-react';
-import { useGetResourcePageContent } from '../hooks/useQueries';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  BookOpen,
+  Download,
+  FileText,
+  Users,
+  Vote,
+  Wallet,
+} from "lucide-react";
+import { useGetResourcePageContent } from "../hooks/useQueries";
 
 export default function ResourcePage() {
   const { data: content, isLoading } = useGetResourcePageContent();
 
   // Icon mapping for guides
   const guideIcons: Record<string, React.ElementType> = {
-    'Getting Started with TMU': BookOpen,
-    'Creating Your Wallet': Wallet,
-    'Staking $TMU': FileText,
-    'Voting & Governance': Vote,
-    'Joining a SubDAO': Users,
+    "Getting Started with TMU": BookOpen,
+    "Creating Your Wallet": Wallet,
+    "Staking $TMU": FileText,
+    "Voting & Governance": Vote,
+    "Joining a SubDAO": Users,
   };
 
   if (isLoading) {
     return (
-      <div className="w-full min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0a1628' }}>
+      <div
+        className="w-full min-h-screen flex items-center justify-center"
+        style={{ backgroundColor: "#0a1628" }}
+      >
         <div className="text-white text-xl">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="w-full py-20" style={{ backgroundColor: '#0a1628' }}>
+    <div className="w-full py-20" style={{ backgroundColor: "#0a1628" }}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -31,7 +41,7 @@ export default function ResourcePage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Resources & Documentation
             </h1>
-            <p className="text-lg" style={{ color: '#9CA3AF' }}>
+            <p className="text-lg" style={{ color: "#9CA3AF" }}>
               Everything you need to understand and participate in TMU AI DAO
             </p>
           </div>
@@ -55,15 +65,15 @@ export default function ResourcePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {content?.architectureLayers.map((layer, index) => (
                   <Card
-                    key={index}
+                    key={layer.title}
                     className="border-white/10 hover:border-[#009B3A]/50 transition-all duration-300"
-                    style={{ backgroundColor: '#1a2744' }}
+                    style={{ backgroundColor: "#1a2744" }}
                   >
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-2">
                         <div
                           className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm"
-                          style={{ backgroundColor: '#009B3A' }}
+                          style={{ backgroundColor: "#009B3A" }}
                         >
                           {index + 1}
                         </div>
@@ -73,7 +83,7 @@ export default function ResourcePage() {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm" style={{ color: '#9CA3AF' }}>
+                      <p className="text-sm" style={{ color: "#9CA3AF" }}>
                         {layer.description}
                       </p>
                     </CardContent>
@@ -89,19 +99,19 @@ export default function ResourcePage() {
               Getting Started Guides
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {content?.guides.map((guide, index) => {
+              {content?.guides.map((guide) => {
                 const IconComponent = guideIcons[guide.title] || BookOpen;
                 return (
                   <Card
-                    key={index}
+                    key={guide.title}
                     className="border-white/10 hover:border-[#009B3A]/50 transition-all duration-300 cursor-pointer group"
-                    style={{ backgroundColor: '#1a2744' }}
+                    style={{ backgroundColor: "#1a2744" }}
                   >
                     <CardHeader>
                       <div className="flex items-center gap-4 mb-3">
                         <div
                           className="w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
-                          style={{ backgroundColor: '#009B3A' }}
+                          style={{ backgroundColor: "#009B3A" }}
                         >
                           <IconComponent className="text-white" size={24} />
                         </div>
@@ -111,9 +121,7 @@ export default function ResourcePage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p style={{ color: '#9CA3AF' }}>
-                        {guide.description}
-                      </p>
+                      <p style={{ color: "#9CA3AF" }}>{guide.description}</p>
                     </CardContent>
                   </Card>
                 );
@@ -127,11 +135,11 @@ export default function ResourcePage() {
               Downloadable Resources
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {content?.resources.map((resource, index) => (
+              {content?.resources.map((resource) => (
                 <Card
-                  key={index}
+                  key={resource.title}
                   className="border-white/10 hover:border-[#FFC300]/50 transition-all duration-300 cursor-pointer group"
-                  style={{ backgroundColor: '#1a2744' }}
+                  style={{ backgroundColor: "#1a2744" }}
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between">

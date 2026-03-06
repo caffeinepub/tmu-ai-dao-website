@@ -6,14 +6,13 @@ import Principal "mo:core/Principal";
 import Stripe "stripe/stripe";
 import AccessControl "authorization/access-control";
 import OutCall "http-outcalls/outcall";
+import Text "mo:core/Text";
 import Int "mo:core/Int";
 import MixinStorage "blob-storage/Mixin";
-import Text "mo:core/Text";
 
 actor {
   include MixinStorage();
 
-  // Access control
   let accessControlState = AccessControl.initState();
   var isAccessControlInitialized = false;
 
@@ -46,10 +45,31 @@ actor {
   };
 
   let userProfiles = Map.empty<Principal, UserProfile>();
+  let sessionOwners = Map.empty<Text, Principal>();
+  var stripeConfiguration : ?Stripe.StripeConfiguration = null;
+
+  public query ({ caller }) func searchUserProfiles(searchText : Text) : async [UserProfile] {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
+      Runtime.trap("Unauthorized: Only users can search profiles");
+    };
+
+    let lowerSearch = searchText.toLower();
+
+    let matchingProfiles = userProfiles.values().toArray().filter(
+      func(profile) {
+        let fullNameMatch = profile.fullName.toLower().contains(#text lowerSearch);
+        let emailMatch = profile.email.toLower().contains(#text lowerSearch);
+        let walletMatch = profile.walletAddress.toLower().contains(#text lowerSearch);
+        fullNameMatch or emailMatch or walletMatch;
+      }
+    );
+
+    matchingProfiles;
+  };
 
   public query ({ caller }) func getCallerUserProfile() : async ?UserProfile {
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
-      Runtime.trap("Unauthorized: Only users can view profiles");
+      Runtime.trap("Unauthorized: Only users can save profiles");
     };
     userProfiles.get(caller);
   };
@@ -68,17 +88,13 @@ actor {
     userProfiles.add(caller, profile);
   };
 
-  var stripeConfiguration : ?Stripe.StripeConfiguration = null;
-
-  let sessionOwners = Map.empty<Text, Principal>();
-
   public query func isStripeConfigured() : async Bool {
     stripeConfiguration != null;
   };
 
   public shared ({ caller }) func setStripeConfiguration(config : Stripe.StripeConfiguration) : async () {
     if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can configure Stripe");
+      Runtime.trap("Unauthorized: Only admins can perform this action");
     };
     stripeConfiguration := ?config;
   };
@@ -105,6 +121,29 @@ actor {
       };
     };
     await Stripe.getSessionStatus(getStripeConfiguration(), sessionId, transform);
+  };
+
+  public shared ({ caller }) func createCheckoutSession(items : [Stripe.ShoppingItem], successUrl : Text, cancelUrl : Text) : async Text {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
+      Runtime.trap("Unauthorized: Only users can create checkout sessions");
+    };
+
+    for (item in items.vals()) {
+      if (item.quantity < 0) {
+        Runtime.trap("Invalid purchase: Negative quantities are not allowed");
+      };
+      if (item.priceInCents < 0) {
+        Runtime.trap("Invalid purchase: Negative prices are not allowed");
+      };
+    };
+
+    let sessionId = await Stripe.createCheckoutSession(getStripeConfiguration(), caller, items, successUrl, cancelUrl, transform);
+    sessionOwners.add(sessionId, caller);
+    sessionId;
+  };
+
+  public query func transform(input : OutCall.TransformationInput) : async OutCall.TransformationOutput {
+    OutCall.transform(input);
   };
 
   public type TokenPurchaseValidation = {
@@ -164,7 +203,7 @@ actor {
 
   public query ({ caller }) func calculatePurchaseSummary(tokenAmount : Int) : async PurchaseSummary {
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
-      Runtime.trap("Unauthorized: Only users can calculate purchase summaries");
+      Runtime.trap("Unauthorized: Only users can calculate purchases");
     };
 
     let sanitizedAmount = if (tokenAmount < 0) { 0 } else { Int.abs(tokenAmount) };
@@ -188,29 +227,6 @@ actor {
       fee = feeInCents;
       total = totalInCents;
     };
-  };
-
-  public shared ({ caller }) func createCheckoutSession(items : [Stripe.ShoppingItem], successUrl : Text, cancelUrl : Text) : async Text {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
-      Runtime.trap("Unauthorized: Only users can create checkout sessions");
-    };
-
-    for (item in items.vals()) {
-      if (item.quantity < 0) {
-        Runtime.trap("Invalid purchase: Negative quantities are not allowed");
-      };
-      if (item.priceInCents < 0) {
-        Runtime.trap("Invalid purchase: Negative prices are not allowed");
-      };
-    };
-
-    let sessionId = await Stripe.createCheckoutSession(getStripeConfiguration(), caller, items, successUrl, cancelUrl, transform);
-    sessionOwners.add(sessionId, caller);
-    sessionId;
-  };
-
-  public query func transform(input : OutCall.TransformationInput) : async OutCall.TransformationOutput {
-    OutCall.transform(input);
   };
 
   public type ArchitectureLayer = {
@@ -356,7 +372,6 @@ actor {
       };
     };
 
-    // Add initial projects
     let initialProjects = [
       {
         id = "Morshid";
@@ -501,7 +516,7 @@ actor {
   };
 
   public query func getProjects() : async [Project] {
-    let projectList = projects.toArray().map(func((_, p)) { p });
+    let projectList = projects.values().toArray();
     projectList;
   };
 

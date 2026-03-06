@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
-import { useActor } from './useActor';
-import type { ResourcePageContent, TmuIresPopupContent } from '../backend';
+import { useQuery } from "@tanstack/react-query";
+import type { ResourcePageContent, TmuIresPopupContent } from "../backend";
+import { useActor } from "./useActor";
 
 // Since the backend no longer provides project/content management,
 // this file now only contains hooks for user profile and authentication-related queries.
@@ -10,9 +10,9 @@ export function useGetCallerUserProfile() {
   const { actor, isFetching: actorFetching } = useActor();
 
   const query = useQuery({
-    queryKey: ['currentUserProfile'],
+    queryKey: ["currentUserProfile"],
     queryFn: async () => {
-      if (!actor) throw new Error('Actor not available');
+      if (!actor) throw new Error("Actor not available");
       return actor.getCallerUserProfile();
     },
     enabled: !!actor && !actorFetching,
@@ -30,9 +30,9 @@ export function useGetResourcePageContent() {
   const { actor, isFetching: actorFetching } = useActor();
 
   return useQuery<ResourcePageContent>({
-    queryKey: ['resourcePageContent'],
+    queryKey: ["resourcePageContent"],
     queryFn: async () => {
-      if (!actor) throw new Error('Actor not available');
+      if (!actor) throw new Error("Actor not available");
       return actor.getResourcePageContent();
     },
     enabled: !!actor && !actorFetching,
@@ -43,9 +43,9 @@ export function useGetTmuIresPopupContent() {
   const { actor, isFetching: actorFetching } = useActor();
 
   return useQuery<TmuIresPopupContent>({
-    queryKey: ['tmuIresPopupContent'],
+    queryKey: ["tmuIresPopupContent"],
     queryFn: async () => {
-      if (!actor) throw new Error('Actor not available');
+      if (!actor) throw new Error("Actor not available");
       return actor.getTmuIresPopupContent();
     },
     enabled: !!actor && !actorFetching,

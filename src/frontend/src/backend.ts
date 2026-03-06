@@ -237,6 +237,7 @@ export interface backendInterface {
     isStripeConfigured(): Promise<boolean>;
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
     saveSocialEdificationImage(imageId: string): Promise<void>;
+    searchUserProfiles(searchText: string): Promise<Array<UserProfile>>;
     setStripeConfiguration(config: StripeConfiguration): Promise<void>;
     transform(input: TransformationInput): Promise<TransformationOutput>;
     validateTokenAmount(amount: bigint): Promise<TokenPurchaseValidation>;
@@ -549,6 +550,20 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.saveSocialEdificationImage(arg0);
+            return result;
+        }
+    }
+    async searchUserProfiles(arg0: string): Promise<Array<UserProfile>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.searchUserProfiles(arg0);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.searchUserProfiles(arg0);
             return result;
         }
     }

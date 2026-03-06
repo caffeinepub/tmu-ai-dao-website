@@ -184,6 +184,11 @@ export const idlService = IDL.Service({
   'isStripeConfigured' : IDL.Func([], [IDL.Bool], ['query']),
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
   'saveSocialEdificationImage' : IDL.Func([IDL.Text], [], []),
+  'searchUserProfiles' : IDL.Func(
+      [IDL.Text],
+      [IDL.Vec(UserProfile)],
+      ['query'],
+    ),
   'setStripeConfiguration' : IDL.Func([StripeConfiguration], [], []),
   'transform' : IDL.Func(
       [TransformationInput],
@@ -367,6 +372,11 @@ export const idlFactory = ({ IDL }) => {
     'isStripeConfigured' : IDL.Func([], [IDL.Bool], ['query']),
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
     'saveSocialEdificationImage' : IDL.Func([IDL.Text], [], []),
+    'searchUserProfiles' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(UserProfile)],
+        ['query'],
+      ),
     'setStripeConfiguration' : IDL.Func([StripeConfiguration], [], []),
     'transform' : IDL.Func(
         [TransformationInput],

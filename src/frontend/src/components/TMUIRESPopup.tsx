@@ -1,116 +1,74 @@
-import { X, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { ExternalLink } from "lucide-react";
 
-interface TMUIRESPopupProps {
-  isOpen: boolean;
+type TMUIRESPopupProps = {
+  open: boolean;
   onClose: () => void;
-  content: {
-    title: string;
-    description: string;
-    documentationLink: string;
-    videoLink: string;
-    additionalLinks: string;
-  };
-}
+  documentationLink?: string;
+  videoLink?: string;
+  additionalLinks?: string;
+};
 
-export default function TMUIRESPopup({ isOpen, onClose, content }: TMUIRESPopupProps) {
-  if (!isOpen) return null;
+export default function TMUIRESPopup({
+  open,
+  onClose,
+  documentationLink = "https://tmu.ai/docs/TMU-IRES.pdf",
+  videoLink = "https://www.youtube.com/watch?v=-_rLVpmdSfo",
+  additionalLinks = "https://linktr.ee/tmu_ires",
+}: TMUIRESPopupProps) {
+  const description = `TMU-IRES is built on our TMU Enablement Platform, which offers the functional capability for immediacy of presentation of data to all participants in essential units of an Operation for real-time discussion / advisory across geographies and language barriers with multi-modal real-time communication capability (WebRTC) as PWA and also through Whatsapp, Telegram, VoIP, GSM, PSTN, USSD etc.
+
+This is achieved with our proprietary development of No-Code AI Agents and Last Mile Facility Builder complete with very versatile capability for integration through API with corporate databases etc.`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70">
-      <div 
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl"
-        style={{ backgroundColor: '#0a1628' }}
-      >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-white hover:text-[#FFC300] transition-colors z-10"
-          aria-label="Close popup"
-        >
-          <X className="w-6 h-6" />
-        </button>
+    <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
+      <DialogContent className="bg-navy-dark border border-white/20 text-white max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-gold text-xl font-bold">
+            TMU-IRES - Public Safety &amp; Drone-based Service Provision
+          </DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4 text-gray-300 text-sm leading-relaxed">
+          {description.split("\n\n").map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))}
 
-        {/* Content */}
-        <div className="p-8">
-          {/* Title */}
-          <h2 
-            className="text-3xl font-bold mb-6 pr-8"
-            style={{ color: '#FFC300' }}
-          >
-            {content.title}
-          </h2>
-
-          {/* Description */}
-          <div className="text-white text-base leading-relaxed mb-8 whitespace-pre-line">
-            {content.description}
-          </div>
-
-          {/* Links Section */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-white mb-4">Resources:</h3>
-            
-            <div className="space-y-3">
-              {/* Documentation Link */}
-              <Button
-                asChild
-                className="w-full justify-start text-white font-medium"
-                style={{
-                  background: 'linear-gradient(135deg, #009B3A 0%, #FFC300 100%)',
-                }}
-              >
-                <a
-                  href={content.documentationLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Documentation
-                </a>
-              </Button>
-
-              {/* Video Link */}
-              <Button
-                asChild
-                className="w-full justify-start text-white font-medium"
-                style={{
-                  background: 'linear-gradient(135deg, #009B3A 0%, #FFC300 100%)',
-                }}
-              >
-                <a
-                  href={content.videoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Video
-                </a>
-              </Button>
-
-              {/* Additional Links */}
-              <Button
-                asChild
-                className="w-full justify-start text-white font-medium"
-                style={{
-                  background: 'linear-gradient(135deg, #009B3A 0%, #FFC300 100%)',
-                }}
-              >
-                <a
-                  href={content.additionalLinks}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Links
-                </a>
-              </Button>
-            </div>
+          <div className="flex flex-col gap-3 pt-2">
+            <a
+              href={documentationLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-gold hover:text-gold/80 transition-colors"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Documentation
+            </a>
+            <a
+              href={videoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-gold hover:text-gold/80 transition-colors"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Video
+            </a>
+            <a
+              href={additionalLinks}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-gold hover:text-gold/80 transition-colors"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Additional Links
+            </a>
           </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }
