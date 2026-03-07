@@ -10,11 +10,12 @@ type ProjectData = {
   image: string;
   type: "website" | "learnMore" | "multiButton";
   url?: string;
+  buttonLabel?: string;
   additionalButtons?: { label: string; url: string }[];
 };
 
 const projectImages: Record<string, string> = {
-  "TeleMeetUp & TMU-Notes": "/assets/Design sans titre (1).png",
+  "TeleMeetUp & TMU-Notes": "/assets/uploads/image-2-1.png",
   Morshid: "/assets/generated/morshid-project.dim_400x250.png",
   Etitude: "/assets/generated/etitude-project.dim_400x250.png",
   "Vospital.Care": "/assets/generated/vospital-care-project.dim_400x250.png",
@@ -24,10 +25,9 @@ const projectImages: Record<string, string> = {
   Airello: "/assets/generated/airello-project.dim_400x250.png",
   "TMU-CATNA": "/assets/generated/tmu-catna-project.dim_400x250.png",
   "TMU-Notes-WST": "/assets/generated/tmu-notes-wst-project.dim_400x250.png",
-  "TMU Enablement Platform":
-    "/assets/generated/tmu-enablement-platform-project.dim_400x250.png",
+  "TMU Enablement Platform": "/assets/uploads/image-3-2.png",
   "Social Edification":
-    "/assets/generated/social-edification-logo-new.dim_400x250.png",
+    "/assets/generated/social-edification-children-singing-learning.dim_400x250.png",
 };
 
 export default function ProjectsPage() {
@@ -38,11 +38,12 @@ export default function ProjectsPage() {
       id: "telemeetup",
       name: "TeleMeetUp & TMU-Notes",
       description:
-        "TeleMeetUp is a next-generation video conferencing platform with AI-powered meeting notes, real-time translation, and seamless collaboration tools for global teams.",
+        "TeleMeetUp is a one-stop teleconferencing solution with AI-powered features: Recording, Transcription & Translation (100+ languages), AI Assistant & Summarization, Whiteboard & Screen Sharing, Connect with anyone with or without the app, Dial out to any phone number.",
       category: "Communication / AI Notes",
       image: projectImages["TeleMeetUp & TMU-Notes"],
-      type: "website",
-      url: "https://www.tmu.ai",
+      type: "learnMore",
+      url: "https://www.youtube.com/watch?v=pk2TtlglNno",
+      buttonLabel: "Watch Video",
     },
     {
       id: "morshid",
@@ -59,20 +60,24 @@ export default function ProjectsPage() {
           url: "https://morshid-agricultural-ai-assistant-infographic-xlp.caffeine.xyz",
         },
         {
-          label: "Presentation",
+          label: "Morshid in a Nutshell",
           url: "https://drive.google.com/file/d/1N0vKLyS661M7U-KzKbxso_kwt6b7MERe/view",
         },
         {
-          label: "Pitch Deck",
+          label: "From Orbit to Field",
           url: "https://drive.google.com/file/d/1upnR3athEwHgRqlKOzor88BlrT6XsdI9/view",
         },
         {
-          label: "Executive Summary",
+          label: "AI Governance",
           url: "https://drive.google.com/file/d/1Zi4Kt6dzmpGkxuwGBa41aqLb20vaDtPg/view?usp=sharing",
         },
         {
-          label: "Business Plan",
+          label: "Global South",
           url: "https://drive.google.com/file/d/1Ik9P0q6RqZfzqn5XqRMS_ufGVe9bSLn9/view?usp=sharing",
+        },
+        {
+          label: "Agritech Pitch",
+          url: "https://tmu.ai/docs/agritech_banking_insurance_pitch.pdf",
         },
       ],
     },
@@ -97,7 +102,7 @@ export default function ProjectsPage() {
       url: "https://www.vospital.care",
       additionalButtons: [
         {
-          label: "Documentation",
+          label: "View Infographic",
           url: "https://drive.google.com/file/d/1M6W9VqgGLReQIr1UR7VAGs2sw1WPdnqw/view",
         },
       ],
@@ -181,6 +186,7 @@ export default function ProjectsPage() {
       image: projectImages["Social Edification"],
       type: "website",
       url: "https://linktr.ee/w5go",
+      buttonLabel: "W5Go",
     },
   ];
 
@@ -246,7 +252,7 @@ export default function ProjectsPage() {
                         className="flex items-center gap-1 text-gold border border-gold/30 hover:bg-gold/10 text-sm px-3 py-1.5 rounded transition-colors"
                       >
                         <ExternalLink className="h-4 w-4" />
-                        Learn More
+                        {project.buttonLabel ?? "Learn More"}
                       </a>
                     ) : project.type === "website" && project.url ? (
                       <a
@@ -256,7 +262,7 @@ export default function ProjectsPage() {
                         className="flex items-center gap-1 text-gold border border-gold/30 hover:bg-gold/10 text-sm px-3 py-1.5 rounded transition-colors"
                       >
                         <ExternalLink className="h-4 w-4" />
-                        Visit Website
+                        {project.buttonLabel ?? "Visit Website"}
                       </a>
                     ) : null}
                     {project.type === "multiButton" && project.url && (
@@ -276,7 +282,7 @@ export default function ProjectsPage() {
                         href={btn.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-gray-300 border border-white/20 hover:bg-white/10 text-sm px-3 py-1.5 rounded transition-colors"
+                        className="flex items-center gap-1 text-gold border border-gold/30 hover:bg-gold/10 text-sm px-3 py-1.5 rounded transition-colors"
                       >
                         <ExternalLink className="h-3 w-3" />
                         {btn.label}
