@@ -74,8 +74,8 @@ export default function HeroIllustration() {
             viewBox="0 0 600 600"
             className="absolute inset-0 w-full h-full"
             style={{ maxWidth: "600px", maxHeight: "600px" }}
+            aria-label="TMU AI DAO network illustration"
             role="img"
-            aria-label="TMU AI DAO network diagram"
           >
             <defs>
               {/* Gradient for copper/bronze hexagon */}

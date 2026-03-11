@@ -1,26 +1,24 @@
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "White Paper", path: "/whitepaper" },
+  { label: "Tokenomics", path: "/tokenomics" },
+  { label: "Projects/SubDAOs", path: "/projects" },
+  { label: "Road Map", path: "/roadmap" },
+  { label: "Web2-Web3 Bridge", path: "/bridge" },
+  { label: "Resource", path: "/resource" },
+  { label: "Sign Up", path: "/signup" },
+];
 
-  const navLinks = [
-    { label: "Home", path: "/" as const },
-    { label: "White Paper", path: "/whitepaper" as const },
-    { label: "Tokenomics", path: "/tokenomics" as const },
-    { label: "Projects/SubDAOs", path: "/projects" as const },
-    { label: "Road Map", path: "/roadmap" as const },
-    { label: "Web2-Web3 Bridge", path: "/bridge" as const },
-    { label: "Resources", path: "/resource" as const },
-  ];
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const routerState = useRouterState();
+  const currentPath = routerState.location.pathname;
 
   return (
     <header
@@ -41,11 +39,15 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className="px-3 py-2 text-sm font-medium transition-colors rounded-md text-gray-300 hover:text-white hover:bg-white/5 [&.active]:text-white [&.active]:bg-white/10"
+                className={`px-3 py-2 text-sm font-medium transition-colors rounded-md ${
+                  currentPath === item.path
+                    ? "text-white bg-white/10"
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
+                }`}
               >
                 {item.label}
               </Link>
@@ -54,109 +56,75 @@ export default function Header() {
 
           {/* Desktop Action Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
-            <button
-              type="button"
-              className="text-gray-300 hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-white/5"
-              onClick={() => navigate({ to: "/signup" })}
-            >
-              Sign Up
-            </button>
-            <button
-              type="button"
-              className="border border-[#FFC300] text-[#FFC300] hover:bg-[#FFC300] hover:text-[#0a1628] px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            <Button
+              variant="outline"
+              className="border-[#FFC300] text-[#FFC300] hover:bg-[#FFC300] hover:text-[#0a1628]"
               onClick={() => navigate({ to: "/signup" })}
             >
               Join TMU AI DAO
-            </button>
-            <button
-              type="button"
-              className="text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            </Button>
+            <Button
+              className="text-white"
               style={{ backgroundColor: "#009B3A" }}
               onClick={() => navigate({ to: "/" })}
             >
               Launch App
-            </button>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <button type="button" className="text-white p-2">
-                  <Menu size={24} />
-                </button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="border-white/10 w-72"
-                style={{ backgroundColor: "#0a1628" }}
-              >
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-6 pt-2">
-                    <span className="text-white font-bold text-lg">
-                      TMU AI DAO
-                    </span>
-                    <SheetClose asChild>
-                      <button
-                        type="button"
-                        className="text-gray-400 hover:text-white"
-                      >
-                        <X className="h-5 w-5" />
-                      </button>
-                    </SheetClose>
-                  </div>
-
-                  <nav className="flex flex-col space-y-2 flex-1">
-                    {navLinks.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        className="px-3 py-2 text-sm font-medium transition-colors rounded-md text-gray-300 hover:text-white hover:bg-white/5 [&.active]:text-white [&.active]:bg-white/10"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </nav>
-
-                  <div className="flex flex-col space-y-3 mt-6 pt-6 border-t border-white/10">
-                    <button
-                      type="button"
-                      className="text-gray-300 hover:text-white hover:bg-white/5 px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                      onClick={() => {
-                        navigate({ to: "/signup" });
-                        setIsOpen(false);
-                      }}
-                    >
-                      Sign Up
-                    </button>
-                    <button
-                      type="button"
-                      className="border border-[#FFC300] text-[#FFC300] hover:bg-[#FFC300] hover:text-[#0a1628] px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                      onClick={() => {
-                        navigate({ to: "/signup" });
-                        setIsOpen(false);
-                      }}
-                    >
-                      Join TMU AI DAO
-                    </button>
-                    <button
-                      type="button"
-                      className="text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                      style={{ backgroundColor: "#009B3A" }}
-                      onClick={() => {
-                        navigate({ to: "/" });
-                        setIsOpen(false);
-                      }}
-                    >
-                      Launch App
-                    </button>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+          <button
+            type="button"
+            className="lg:hidden text-white p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden py-4 border-t border-white/10">
+            <nav className="flex flex-col space-y-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`px-3 py-2 text-sm font-medium transition-colors rounded-md ${
+                    currentPath === item.path
+                      ? "text-white bg-white/10"
+                      : "text-gray-300 hover:text-white hover:bg-white/5"
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex flex-col space-y-2 mt-4">
+              <Button
+                variant="outline"
+                className="border-[#FFC300] text-[#FFC300] hover:bg-[#FFC300] hover:text-[#0a1628]"
+                onClick={() => {
+                  navigate({ to: "/signup" });
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Join TMU AI DAO
+              </Button>
+              <Button
+                className="text-white"
+                style={{ backgroundColor: "#009B3A" }}
+                onClick={() => {
+                  navigate({ to: "/" });
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Launch App
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

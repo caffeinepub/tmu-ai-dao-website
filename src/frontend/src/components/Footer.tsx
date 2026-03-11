@@ -2,23 +2,6 @@ import { Heart } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 
 export default function Footer() {
-  const appId = encodeURIComponent(
-    typeof window !== "undefined"
-      ? window.location.hostname || "tmu-ai-dao"
-      : "tmu-ai-dao",
-  );
-
-  const quickLinks = [
-    { label: "Home", path: "/" },
-    { label: "White Paper", path: "/whitepaper" },
-    { label: "Tokenomics", path: "/tokenomics" },
-    { label: "Projects/SubDAOs", path: "/projects" },
-    { label: "Road Map", path: "/roadmap" },
-    { label: "Web2-Web3 Bridge", path: "/bridge" },
-    { label: "Resources", path: "/resource" },
-    { label: "Sign Up", path: "/signup" },
-  ];
-
   return (
     <footer
       className="border-t border-white/10"
@@ -47,15 +30,54 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              {quickLinks.map((link) => (
-                <a
-                  key={link.path}
-                  href={link.path}
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              <a
+                href="/"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Home
+              </a>
+              <a
+                href="/whitepaper"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                White Paper
+              </a>
+              <a
+                href="/tokenomics"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Tokenomics
+              </a>
+              <a
+                href="/projects"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Projects/SubDAOs
+              </a>
+              <a
+                href="/roadmap"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Road Map
+              </a>
+              <a
+                href="/web2web3bridge"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Web2-Web3 Bridge
+              </a>
+              <a
+                href="/resource"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Resources
+              </a>
+              <a
+                href="/signup"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Sign Up
+              </a>
             </div>
           </div>
 
@@ -93,9 +115,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col md:flex-row items-center gap-4">
-            <p className="text-gray-400 text-sm">
-              {`© ${new Date().getFullYear()} TMU AI DAO. All rights reserved.`}
-            </p>
+            <p className="text-gray-400 text-sm">© 2026 TMU AI DAO</p>
             <div className="flex items-center gap-3">
               <a
                 href="https://www.tmu.ai/terms.php"
@@ -119,7 +139,7 @@ export default function Footer() {
             Built with <Heart size={14} className="text-red-500 fill-red-500" />{" "}
             using{" "}
             <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appId}`}
+              href="https://caffeine.ai"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:underline"

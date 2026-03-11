@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { useNavigate } from "@tanstack/react-router";
 import {
   AlertTriangle,
   Anchor,
@@ -10,8 +9,6 @@ import {
 } from "lucide-react";
 
 export default function TokenomicsPage() {
-  const navigate = useNavigate();
-
   return (
     <div className="w-full py-20" style={{ backgroundColor: "#0a1628" }}>
       <div className="container mx-auto px-4">
@@ -39,20 +36,22 @@ export default function TokenomicsPage() {
             <CardContent className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div>
-                  <p className="text-5xl font-bold text-white mb-2">10B $TMU</p>
-                  <p className="text-gray-400 text-lg">Total Supply (Fixed)</p>
+                  <p className="text-5xl font-bold text-white mb-2">
+                    10 Billion
+                  </p>
+                  <p className="text-gray-400 text-lg">Fixed Total Supply</p>
                 </div>
                 <div>
                   <p className="text-5xl font-bold text-[#FFC300] mb-2">
                     $0.10
                   </p>
-                  <p className="text-gray-400 text-lg">Token Price</p>
+                  <p className="text-gray-400 text-lg">Price per token</p>
                 </div>
                 <div>
                   <p className="text-4xl font-bold text-white mb-2">
                     US$100 = 1000 $TMU
                   </p>
-                  <p className="text-gray-400 text-lg">Purchase Rate</p>
+                  <p className="text-gray-400 text-lg">Entry Point</p>
                 </div>
               </div>
             </CardContent>
@@ -61,7 +60,7 @@ export default function TokenomicsPage() {
           {/* Staking Rewards Section */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white text-center mb-8">
-              Staking Rewards &amp; Discounts
+              Staking Rewards
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Bronze - 1 Year */}
@@ -77,10 +76,13 @@ export default function TokenomicsPage() {
                     <span className="text-white text-2xl font-bold">1Y</span>
                   </div>
                   <h3 className="text-3xl font-bold text-[#CD7F32] mb-2">
-                    10% OFF
+                    10% Discount
                   </h3>
-                  <p className="text-white text-xl mb-4">Stake for 1 Year</p>
-                  <p className="text-gray-400">1,000 – 9,999 $TMU staked</p>
+                  <p className="text-white text-xl mb-4">1 Year Lock</p>
+                  <p className="text-gray-400">
+                    Stake your tokens for 1 year and receive a 10% discount on
+                    all services
+                  </p>
                 </CardContent>
               </Card>
 
@@ -99,10 +101,13 @@ export default function TokenomicsPage() {
                     </span>
                   </div>
                   <h3 className="text-3xl font-bold text-[#C0C0C0] mb-2">
-                    25% OFF
+                    20% Discount
                   </h3>
-                  <p className="text-white text-xl mb-4">Stake for 2 Years</p>
-                  <p className="text-gray-400">10,000 – 99,999 $TMU staked</p>
+                  <p className="text-white text-xl mb-4">2 Year Lock</p>
+                  <p className="text-gray-400">
+                    Stake your tokens for 2 years and receive a 20% discount on
+                    all services
+                  </p>
                 </CardContent>
               </Card>
 
@@ -121,10 +126,13 @@ export default function TokenomicsPage() {
                     </span>
                   </div>
                   <h3 className="text-3xl font-bold text-[#FFC300] mb-2">
-                    50% OFF
+                    30% Discount
                   </h3>
-                  <p className="text-white text-xl mb-4">Stake for 3 Years</p>
-                  <p className="text-gray-400">100,000+ $TMU staked</p>
+                  <p className="text-white text-xl mb-4">3 Year Lock</p>
+                  <p className="text-gray-400">
+                    Stake your tokens for 3 years and receive a 30% discount on
+                    all services
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -133,7 +141,7 @@ export default function TokenomicsPage() {
           {/* Token Utility Section */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white text-center mb-8">
-              Token Utility
+              What can $TMU do?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* AI Compute Metering */}
@@ -154,8 +162,7 @@ export default function TokenomicsPage() {
                         AI Compute Metering
                       </h3>
                       <p className="text-gray-400">
-                        Pay for AI microservices including health diagnostics,
-                        educational content, and agricultural guidance.
+                        Pay for AI inference and services
                       </p>
                     </div>
                   </div>
@@ -180,8 +187,7 @@ export default function TokenomicsPage() {
                         DID Verification
                       </h3>
                       <p className="text-gray-400">
-                        Fund decentralized identity verification and credential
-                        anchoring on the blockchain.
+                        Identity verification fees
                       </p>
                     </div>
                   </div>
@@ -205,10 +211,7 @@ export default function TokenomicsPage() {
                       <h3 className="text-xl font-bold text-white mb-2">
                         Credential Anchoring
                       </h3>
-                      <p className="text-gray-400">
-                        Anchor verifiable credentials and records immutably on
-                        the Internet Computer Protocol.
-                      </p>
+                      <p className="text-gray-400">Blockchain record fees</p>
                     </div>
                   </div>
                 </CardContent>
@@ -232,8 +235,7 @@ export default function TokenomicsPage() {
                         Governance Participation
                       </h3>
                       <p className="text-gray-400">
-                        Participate in TMU-NNS voting and SubDAO governance with
-                        token-weighted voting rights.
+                        Vote on proposals via TMU-NNS
                       </p>
                     </div>
                   </div>
@@ -371,18 +373,6 @@ export default function TokenomicsPage() {
               </div>
             </CardContent>
           </Card>
-
-          {/* CTA */}
-          <div className="text-center mt-8">
-            <button
-              type="button"
-              onClick={() => navigate({ to: "/signup" })}
-              className="text-white font-bold px-10 py-4 rounded-lg transition-colors text-lg"
-              style={{ backgroundColor: "#FFC300", color: "#0a1628" }}
-            >
-              Sign Up to Purchase $TMU
-            </button>
-          </div>
         </div>
       </div>
     </div>
